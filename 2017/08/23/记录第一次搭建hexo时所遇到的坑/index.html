@@ -23,7 +23,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/08/23/记录第一次搭建hexo时所遇到的坑/index.html">
 <meta property="og:site_name" content="qiuwatcher的小站">
 <meta property="og:description" content="由来最近公司事情比较少，闲来无事，想整个博客，就去简书搜索了一下，就发现了精品好文,感谢作者GingerBot的分享! 我所遇到的(坑)-安装npm安装npm时，我参考了这篇文章,按照上面的步骤安装，registry更改为taobao的镜像 1npm config set registry https://registry.npm.taobao.org 然后执行 1npm install 当时终端">
-<meta property="og:updated_time" content="2017-08-23T03:15:33.000Z">
+<meta property="og:updated_time" content="2017-08-23T05:09:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记录第一次搭建hexo时所遇到的坑 | qiuwatcher的小站">
 <meta name="twitter:description" content="由来最近公司事情比较少，闲来无事，想整个博客，就去简书搜索了一下，就发现了精品好文,感谢作者GingerBot的分享! 我所遇到的(坑)-安装npm安装npm时，我参考了这篇文章,按照上面的步骤安装，registry更改为taobao的镜像 1npm config set registry https://registry.npm.taobao.org 然后执行 1npm install 当时终端">
@@ -63,7 +63,7 @@
 
         
         <p class="panel-cover__description">
-          朝如青丝暮成雪
+          朝如青絲暮成雪
         </p>
         <hr class="panel-cover__divider panel-cover__divider--secondary" />
         
@@ -195,8 +195,29 @@ classes that you can use:
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">npm ERR! tar.unpack untar error /Users/aprildove/.npm/hexo/3.2.2/package.tgz</div><div class="line">npm ERR! Darwin 15.3.0</div><div class="line">npm ERR! argv <span class="string">"/usr/local/bin/node"</span> <span class="string">"/usr/local/bin/npm"</span> <span class="string">"install"</span> <span class="string">"hexo"</span> <span class="string">"-g"</span></div><div class="line">npm ERR! node v4.4.5</div><div class="line">npm ERR! npm  v2.15.5</div><div class="line">npm ERR! path /usr/<span class="built_in">local</span>/lib/node_modules/hexo</div><div class="line">npm ERR! code EACCES</div><div class="line">npm ERR! errno -13</div><div class="line">npm ERR! syscall mkdir</div><div class="line"></div><div class="line">npm ERR! Error: EACCES: permission denied, mkdir <span class="string">'/usr/local/lib/node_modules/hexo'</span></div><div class="line">npm ERR!     at Error (native)</div><div class="line">npm ERR!  &#123; [Error: EACCES: permission denied, mkdir <span class="string">'/usr/local/lib/node_modules/hexo'</span>]</div><div class="line">npm ERR!   errno: -13,</div><div class="line">npm ERR!   code: <span class="string">'EACCES'</span>,</div><div class="line">npm ERR!   syscall: <span class="string">'mkdir'</span>,</div><div class="line">npm ERR!   path: <span class="string">'/usr/local/lib/node_modules/hexo'</span>,</div><div class="line">npm ERR!   fstream_type: <span class="string">'Directory'</span>,</div><div class="line">npm ERR!   fstream_path: <span class="string">'/usr/local/lib/node_modules/hexo'</span>,</div><div class="line">npm ERR!   fstream_class: <span class="string">'DirWriter'</span>,</div><div class="line">npm ERR!   fstream_stack: </div><div class="line">npm ERR!    [ <span class="string">'/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:35:25'</span>,</div><div class="line">npm ERR!      <span class="string">'/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:47:53'</span>,</div><div class="line">npm ERR!      <span class="string">'FSReqWrap.oncomplete (fs.js:82:15)'</span> ] &#125;</div><div class="line">npm ERR! </div><div class="line">npm ERR! Please try running this <span class="built_in">command</span> again as root/Administrator.</div><div class="line"></div><div class="line">npm ERR! Please include the following file with any support request:</div><div class="line">npm ERR!     /Users/aprildove/Workspace/github/npm-debug.log</div></pre></td></tr></table></figure>
 <p>本着不耻下问的原则，我去度娘了一发，找到了segmentfault上的<a href="https://segmentfault.com/a/1190000007391287" target="_blank" rel="external">这篇文章</a>。错误信息表明，权限不足，所以无法执行。解决方法如下:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown -R <span class="variable">$USER</span> /usr/<span class="built_in">local</span></div></pre></td></tr></table></figure>
-<p>执行后 输入密码  再执行<code>npm install hexo -g</code> 即可.</p>
-<p>安装玩hexo后，就可以愉快的找一个自己心水的主题啦，可以去知乎<a href="https://www.zhihu.com/question/24422335" target="_blank" rel="external">看一看</a>~</p>
+<p>执行后 输入密码  再执行<figure class="highlight plain"><figcaption><span>install hexo -g``` 即可.</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">安装玩hexo后，就可以愉快的找一个自己心水的主题啦，可以去知乎[看一看](https://www.zhihu.com/question/24422335)~</div><div class="line"></div><div class="line">#### -配置Deploy</div><div class="line">修改完成_config.yml文件后，执行`hexo deploy` 报了个错</div><div class="line"></div><div class="line">``` bash</div><div class="line">ERROR Deployer not found: git</div></pre></td></tr></table></figure></p>
+<p>解决方法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git –save</div></pre></td></tr></table></figure>
+<p>然后再执行<code>hexo deploy</code>，本以为成功了，🙃 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Warning: Permanently added <span class="string">'github.com,192.30.255.112'</span> (RSA) to the list of known hosts.</div><div class="line">Permission denied (publickey).</div><div class="line">fatal: Could not <span class="built_in">read</span> from remote repository.</div><div class="line"></div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div><div class="line">FATAL Something<span class="string">'s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</span></div><div class="line"><span class="string">Error: Warning: Permanently added '</span>github.com,192.30.255.112<span class="string">' (RSA) to the list of known hosts.</span></div><div class="line"><span class="string">Permission denied (publickey).</span></div><div class="line"><span class="string">fatal: Could not read from remote repository.</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">Please make sure you have the correct access rights</span></div><div class="line"><span class="string">and the repository exists.</span></div></pre></td></tr></table></figure>
+<hr>
+<p>喜闻乐见的坑又出现啦，然后度娘到这篇<a href="http://www.cnblogs.com/qcwblog/p/5709720.html" target="_blank" rel="external">文章</a>。<br>错误信息的原因是：GitHub上没有添加公钥.  解决方法如下：</p>
+<ul>
+<li>输入一下命令</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C <span class="string">"你的github账号"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>回车执行之后，连续按三个回车，会生成一个randomart image</li>
+<li>cd到.ssh文件夹下</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> ~/.ssh</div></pre></td></tr></table></figure>
+<ul>
+<li>cat .ssh文件中的 id_rsa.pub 文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat id_rsa.pub</div></pre></td></tr></table></figure>
+<ul>
+<li>执行以上命令后，终端会出现一段 ssh-rsa 的Fingerprint，复制并粘贴到GitHub设置页面的SSH Keys中即可</li>
+</ul>
 <hr>
 
   </section>
