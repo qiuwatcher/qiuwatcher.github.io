@@ -23,7 +23,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/08/23/记录第一次搭建hexo时所遇到的坑/index.html">
 <meta property="og:site_name" content="qiuwatcher的小站">
 <meta property="og:description" content="由来最近公司事情比较少，闲来无事，想整个博客，就去简书搜索了一下，就发现了精品好文,感谢作者GingerBot的分享! 我所遇到的(坑)-安装npm安装npm时，我参考了这篇文章,按照上面的步骤安装，registry更改为taobao的镜像 1npm config set registry https://registry.npm.taobao.org 然后执行 1npm install 当时终端">
-<meta property="og:updated_time" content="2017-08-23T05:09:50.000Z">
+<meta property="og:updated_time" content="2017-08-23T06:08:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记录第一次搭建hexo时所遇到的坑 | qiuwatcher的小站">
 <meta name="twitter:description" content="由来最近公司事情比较少，闲来无事，想整个博客，就去简书搜索了一下，就发现了精品好文,感谢作者GingerBot的分享! 我所遇到的(坑)-安装npm安装npm时，我参考了这篇文章,按照上面的步骤安装，registry更改为taobao的镜像 1npm config set registry https://registry.npm.taobao.org 然后执行 1npm install 当时终端">
@@ -200,7 +200,6 @@ classes that you can use:
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git –save</div></pre></td></tr></table></figure>
 <p>然后再执行<code>hexo deploy</code>，本以为成功了，🙃 </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Warning: Permanently added <span class="string">'github.com,192.30.255.112'</span> (RSA) to the list of known hosts.</div><div class="line">Permission denied (publickey).</div><div class="line">fatal: Could not <span class="built_in">read</span> from remote repository.</div><div class="line"></div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div><div class="line">FATAL Something<span class="string">'s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</span></div><div class="line"><span class="string">Error: Warning: Permanently added '</span>github.com,192.30.255.112<span class="string">' (RSA) to the list of known hosts.</span></div><div class="line"><span class="string">Permission denied (publickey).</span></div><div class="line"><span class="string">fatal: Could not read from remote repository.</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">Please make sure you have the correct access rights</span></div><div class="line"><span class="string">and the repository exists.</span></div></pre></td></tr></table></figure>
-<hr>
 <p>喜闻乐见的坑又出现啦，然后度娘到这篇<a href="http://www.cnblogs.com/qcwblog/p/5709720.html" target="_blank" rel="external">文章</a>。<br>错误信息的原因是：GitHub上没有添加公钥.  解决方法如下：</p>
 <ul>
 <li>输入一下命令</li>
@@ -218,7 +217,9 @@ classes that you can use:
 <ul>
 <li>执行以上命令后，终端会出现一段 ssh-rsa 的Fingerprint，复制并粘贴到GitHub设置页面的SSH Keys中即可</li>
 </ul>
-<hr>
+<p><br><br>成功添加公钥后，执行<code>hexo deploy</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INFO  Deploy <span class="keyword">done</span>: git</div></pre></td></tr></table></figure>
+<p>OK.. 大功告成，快去看看<a href="https://qiuwatcher.github.io" target="_blank" rel="external">我的小站</a>吧。</p>
 
   </section>
 
