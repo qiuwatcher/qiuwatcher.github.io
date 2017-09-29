@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      适配iOS 11、iPhone X | qiuwatcher の小站 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="qiuwatcher">
+    
+    
+
+    <meta name="description" content="前言随着新iPhone的发布，iOS 11上线,新一轮的适配狂潮来临啦。网上有很多适配iOS 11的文章，这里我记录下我在项目中所遇到的问题。  tableView内容偏移升级了iOS 11后，运行项目代码，发现tableview整体下移，如下图：  这是因为iOS 11中UIViewController的automaticallyAdjustsScrollViewInsets属性被废弃了，因此当">
+<meta name="keywords" content="iOS 11,iPhone X">
+<meta property="og:type" content="article">
+<meta property="og:title" content="适配iOS 11、iPhone X | qiuwatcher の小站">
+<meta property="og:url" content="http://yoursite.com/2017/09/29/适配iOS 11 iPhone X/index.html">
+<meta property="og:site_name" content="qiuwatcher の小站">
+<meta property="og:description" content="前言随着新iPhone的发布，iOS 11上线,新一轮的适配狂潮来临啦。网上有很多适配iOS 11的文章，这里我记录下我在项目中所遇到的问题。  tableView内容偏移升级了iOS 11后，运行项目代码，发现tableview整体下移，如下图：  这是因为iOS 11中UIViewController的automaticallyAdjustsScrollViewInsets属性被废弃了，因此当">
+<meta property="og:image" content="http://yoursite.com/resources/空隙.png">
+<meta property="og:image" content="http://yoursite.com/resources/短两截.png">
+<meta property="og:image" content="http://yoursite.com/resources/截屏1.png">
+<meta property="og:image" content="http://yoursite.com/resources/截屏2.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1501122-c3da1c182bfa0e2b.png?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1501122-e3a25406155abab7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://yoursite.com/resources/加载更多.png">
+<meta property="og:updated_time" content="2017-09-29T08:56:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="适配iOS 11、iPhone X | qiuwatcher の小站">
+<meta name="twitter:description" content="前言随着新iPhone的发布，iOS 11上线,新一轮的适配狂潮来临啦。网上有很多适配iOS 11的文章，这里我记录下我在项目中所遇到的问题。  tableView内容偏移升级了iOS 11后，运行项目代码，发现tableview整体下移，如下图：  这是因为iOS 11中UIViewController的automaticallyAdjustsScrollViewInsets属性被废弃了，因此当">
+<meta name="twitter:image" content="http://yoursite.com/resources/空隙.png">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">qiuwatcher の小站</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          朝如青絲暮成雪
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">适配iOS 11、iPhone X</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-09-29" class="post-meta__date date">2017-09-29</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/iOS-11/">iOS 11</a>, <a class="tags-link" href="/tags/iPhone-X/">iPhone X</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>随着新iPhone的发布，iOS 11上线,新一轮的适配狂潮来临啦。网上有很多适配iOS 11的文章，这里我记录下我在项目中所遇到的问题。</p>
+<p><br></p>
+<h4 id="tableView内容偏移"><a href="#tableView内容偏移" class="headerlink" title="tableView内容偏移"></a>tableView内容偏移</h4><p>升级了iOS 11后，运行项目代码，发现tableview整体下移，如下图：</p>
+<p><img src="/resources/空隙.png" alt="图片"></p>
+<p>这是因为iOS 11中<code>UIViewController</code>的<code>automaticallyAdjustsScrollViewInsets</code>属性被废弃了，因此当tableView超出安全区域时，系统自动会调整SafeAreaInsets值，进而影响adjustedContentInset值。</p>
+<p>解决方法： 添加一下代码 设置tableview</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">_tableView.estimatedRowHeight = 0;</div><div class="line">_tableView.estimatedSectionFooterHeight = 0;</div><div class="line">_tableView.estimatedSectionHeaderHeight = 0;</div></pre></td></tr></table></figure>
+<p><br><br><br></p>
+<h4 id="导航栏"><a href="#导航栏" class="headerlink" title="导航栏"></a>导航栏</h4><p>iOS 11的导航栏的改动很大，坑也最多。</p>
+<ul>
+<li>导航栏高度<br>导航栏在iOS 11之前高度都是64p，但是iOS 11中添加一种大标题模式，大标题导航栏高度达到了96p。大标题默认是关闭的，所以如果项目中不用到大标题，可以不考虑这点。而iPhone X的导航栏，因为有了刘海，就是辣么别致，高度达到了88p。为了适配iPhone X安利一下宏定义：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#define kStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height //状态栏高度 20 or 44</div><div class="line">#define kNavigationBarHeight 44.0</div><div class="line">#define kTabBarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height&gt;20?83:49) //tabbar 高度</div><div class="line">#define kTabBottomHeight 34.0</div><div class="line">#define kNavBarHeight (kStatusBarHeight + kNavigationBarHeight) //导航栏高度 64 or 88</div></pre></td></tr></table></figure>
+<p>项目中，如果之前木有用宏定义的话，就要替换了，原先64的地方，用kNavBarHeight这个宏代替，开始搬砖吧…</p>
+<ul>
+<li>导航栏边距<br>在iOS 11对导航栏里面的item的边距也做了调整，titleView调整最大的宽带，边距在iPhone6p上是20p，在iPhone6p以下是16p；在iOS 11以下，这个边距分别是12p和8p；如果设置了左右navigationBarButton，在iOS 11里，navigationBarButton的边距是20p和16p;在iOS 11以下，也是20p和16p；如果同时设置了titleView和navigationBarButton，则在iOS 11以下，它们之间的间距是6p，在iOS11则无间距。<br>如果项目中，用了自定义返回按钮，想要让边距相同，可以通过改变edgeInsets来实现。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">backBtn.contentEdgeInsets = UIEdgeInsetsMake(0, -4, 0, 0);</div></pre></td></tr></table></figure>
+<ul>
+<li>导航栏点击区域<br>升级iOS 11后，自定义返回按钮点击区域变小了，导致用户体验很不好。可以设置点击区域宽度来解决这个问题:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if ([backBtn respondsToSelector:@selector(widthAnchor)]) &#123;</div><div class="line">    NSLayoutConstraint *widthConstraint = [backBtn.widthAnchor constraintEqualToConstant:50];</div><div class="line">    widthConstraint.active = YES;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><br><br><br></p>
+<h3 id="iPhone-X的适配"><a href="#iPhone-X的适配" class="headerlink" title="iPhone X的适配"></a>iPhone X的适配</h3><p>下载了Xcode 9，迫不及待的用iPhone X模拟器运行项目，一阵菊花转动后，APP界面上下部分空出一部分。</p>
+<p><img src="/resources/短两截.png" alt="图片"></p>
+<p>出现这个问题，是因为iPhone X的屏幕尺寸为1125x2436，而我们项目中并木有相匹配的launchImage。老项目中并木有iPhone X的launchImage的位置，此时要勾选如下图的Portrait。</p>
+<p><img src="/resources/截屏1.png" alt="图片"></p>
+<p>勾选后，添加尺寸为（1125 × 2436 pixels）的图片即可。</p>
+<p><img src="/resources/截屏2.png" alt="图片"></p>
+<p><br><br><br><br>在设计方面，苹果官方文档<a href="https://developer.apple.com/ios/human-interface-guidelines/overview/themes/" target="_blank" rel="external">human-interface-guidelines</a>有明确要求:<br><img src="http://upload-images.jianshu.io/upload_images/1501122-c3da1c182bfa0e2b.png?imageMogr2/auto-orient/strip" alt="图片">展示出来的设计布局要填满整个屏幕</p>
+<p><br><br><img src="http://upload-images.jianshu.io/upload_images/1501122-e3a25406155abab7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片">安全区域以外的区域不允许有任何与用户交互的控件</p>
+<p><br><br>iPhone X 底部的虚拟区是替代了传统home键，高度为34pt，通过上滑可呼起多任务管理，考虑到手势冲突，这部分也是不允许有任何可交互的控件，也就是说我们要把tableview的高度减去34pt。</p>
+<p>继续看APP界面，发现上拉加载更多会出现以下情况：</p>
+<p><img src="/resources/加载更多.png" alt="图片"></p>
+<p><br><br>mjRefresh超出了安全区域，解决这个问题我们要把tableview的高度减去34pt。判断设备是否是iPhone X，是iPhone X则tableview高度减去34pt。</p>
+<p>判断设备是否是iPhone X</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define iPhone_X ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125,2436), [[UIScreen mainScreen] currentMode].size) : NO)</div></pre></td></tr></table></figure>
+<p><br><br>适配iPhone X，需要一个界面一个界面看过去，基本上每个界面的问题都差不多，仔细点慢工出细活。以上就是我在适配时，遇到的主要的问题…</p>
+<p><br></p>
+<hr>
+<h5 id="tips"><a href="#tips" class="headerlink" title="tips:"></a>tips:</h5><p>1.<a href="https://www.theiphonewiki.com/wiki/Models" target="_blank" rel="external">苹果设配型号查询</a></p>
+<p>2.iOS 11打包的时候还要添加一张1024x1024的APP icon</p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
