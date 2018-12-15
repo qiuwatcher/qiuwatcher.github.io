@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      runtime的简单应用 | qiuwatcherの小站 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="qiuwatcher">
+    
+    
+
+    <meta name="description" content="什么是runtime &amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;Objective-C 的 Runtime 是一个运行时库（Runtime Library），它是一个主要使用 C 和汇编写的库，为 C 添加了面相对象的能力并创造了 Objective-C。runtime 是OC底层的一套C语言的API（引入\或\），编译器最终都会将OC代码转化为运行时代码，通过终端命令编译.m 文件：cla">
+<meta name="keywords" content="-runtime">
+<meta property="og:type" content="article">
+<meta property="og:title" content="runtime的简单应用 | qiuwatcherの小站">
+<meta property="og:url" content="http://qiuwatcher.github.io/2017/10/20/runtime的简单应用/index.html">
+<meta property="og:site_name" content="qiuwatcherの小站">
+<meta property="og:description" content="什么是runtime &amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;Objective-C 的 Runtime 是一个运行时库（Runtime Library），它是一个主要使用 C 和汇编写的库，为 C 添加了面相对象的能力并创造了 Objective-C。runtime 是OC底层的一套C语言的API（引入\或\），编译器最终都会将OC代码转化为运行时代码，通过终端命令编译.m 文件：cla">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-15T05:53:43.532Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="runtime的简单应用 | qiuwatcherの小站">
+<meta name="twitter:description" content="什么是runtime &amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;Objective-C 的 Runtime 是一个运行时库（Runtime Library），它是一个主要使用 C 和汇编写的库，为 C 添加了面相对象的能力并创造了 Objective-C。runtime 是OC底层的一套C语言的API（引入\或\），编译器最终都会将OC代码转化为运行时代码，通过终端命令编译.m 文件：cla">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">qiuwatcherの小站</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          朝如青絲暮成雪
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">runtime的简单应用</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-10-20" class="post-meta__date date">2017-10-20</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/runtime/">-runtime</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h3 id="什么是runtime"><a href="#什么是runtime" class="headerlink" title="什么是runtime"></a>什么是runtime</h3><p> &ensp;&ensp;&ensp;&ensp;Objective-C 的 Runtime 是一个运行时库（Runtime Library），它是一个主要使用 C 和汇编写的库，为 C 添加了面相对象的能力并创造了 Objective-C。<br>runtime 是OC底层的一套C语言的API（引入\或\），编译器最终都会将OC代码转化为运行时代码，通过终端命令编译.m 文件：<code>clang -rewrite-objc xxx.m</code>可以看到编译后的xxx.cpp（C++文件）。</p>
+<h3 id="如何应用runtime"><a href="#如何应用runtime" class="headerlink" title="如何应用runtime"></a>如何应用runtime</h3><p>1.交换两个方法 （可用于拦截系统自带方法）</p>
+<p>获取某个方法<br><code>Method class_getClassMethod(Class cls , SEL name)</code></p>
+<p>获取某个类的实例方法<br><code>Method class_getInstanceMethod(Class cls , SEL name)</code></p>
+<p>交换两个方法<br><code>void method_exchangeImplementations(Method m1 , Method m2)</code></p>
+<p>示例：<br>有一个student的类，实现下列两个方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+(void)play &#123;</span><br><span class="line">   NSLog(@&quot;耍&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">+(void)study &#123;</span><br><span class="line">   NSLog(@&quot;学习&quot;);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>然后通过runtime 实现方法交换，类方法用<code>class_getClassMethod</code> ，对象方法用<code>class_getInstanceMethod</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 获取两个类的类方法</span><br><span class="line">Method m1 = class_getClassMethod([Student class],@selector(play));</span><br><span class="line">Method m2 = class_getClassMethod([Student class], @selector(study));</span><br><span class="line">// 开始交换方法实现</span><br><span class="line">method_exchangeImplementations(m1, m2);</span><br><span class="line">// 交换后，先打印学习，再打印耍</span><br><span class="line">[Student play];</span><br><span class="line">[Student study];</span><br></pre></td></tr></table></figure>
+<p><br><br>2.设置属性，给任一对象设置新属性</p>
+<p>使用<code>objc_setAssociatedObject</code> 将值value 跟对象object 关联起来</p>
+<p><code>void objc_setAssociatedObject(id object , const void *key ,id value ,objc_AssociationPolicy policy)</code></p>
+<p>然后可以通过参数key将对象存储的对应值取出来<br><code>id objc_getAssociatedObject(id object , const void *key)</code></p>
+<p><em>示例：</em></p>
+<p>页面上有一个button和label，现点击button需改变label的title、颜色等等状态，这种情况，我们可以用<code>objc_setAssociatedObject</code> 将label与button关联起来</p>
+<p><code>objc_setAssociatedObject(button, @&quot;btnTitle&quot;,label,OBJC_ASSOCIATION_ASSIGN);</code></p>
+<p>然后可以在button的点击事件中，根据key获取到label</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)buttonAction:(UIButton *)sender &#123;</span><br><span class="line">	UILabel *label = objc_getAssociatedObject((UIButton *)sender, @&quot;btnTitle&quot;);</span><br><span class="line">    isClick = !isClick;</span><br><span class="line">    if (isClick) &#123;</span><br><span class="line">    	label.text = @&quot;收起&quot;;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">    	label.text = @&quot;展示&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p><br><br>3.获取类的所有属性</p>
+<p>获取某个类的所有属性<br><code>Ivar *class_copyIvarList(Class cls , unsigned int *outCount)</code></p>
+<p>获取属性的名字<br><code>const char *ivar_getName(Ivar v)</code></p>
+<p>获取属性的类型<br><code>const char *ivar_getTypeEndcoding(Ivar v)</code></p>
+<p><em>示例：</em></p>
+<p>获取Student类中的所有属性的名字和类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">unsigned int outCount = 0;</span><br><span class="line">Ivar *ivars = class_copyIvarList([Student class], &amp;outCount);</span><br><span class="line">// 遍历所有成员变量</span><br><span class="line">for (int i = 0; i &lt; outCount; i++) &#123;</span><br><span class="line">    // 取出i位置对应的成员变量</span><br><span class="line">    Ivar ivar = ivars[i];</span><br><span class="line">    const char *name = ivar_getName(ivar);</span><br><span class="line">    const char *type = ivar_getTypeEncoding(ivar);</span><br><span class="line">    NSLog(@&quot;变量名：%s 变量类型：%s&quot;,name,type);</span><br><span class="line">&#125;</span><br><span class="line">//释放内存</span><br><span class="line">free(ivars);</span><br></pre></td></tr></table></figure>
+<p>利用runtime 获取所有属性来重写归档解档方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">// 解档</span><br><span class="line">- (instancetype)initWithCoder:(NSCoder *)aDecoder &#123;</span><br><span class="line">    if (self = [super initWithCoder:aDecoder]) &#123;</span><br><span class="line">        // 获取所有成员变量</span><br><span class="line">        unsigned int outCount = 0;</span><br><span class="line">        Ivar *ivars = class_copyIvarList([self class], &amp;outCount);</span><br><span class="line">        </span><br><span class="line">        for (int i = 0; i &lt; outCount; i++) &#123;</span><br><span class="line">            Ivar ivar = ivars[i];</span><br><span class="line">            // 将每个成员变量名转换为NSString对象类型</span><br><span class="line">            NSString *key = [NSString stringWithUTF8String:ivar_getName(ivar)];</span><br><span class="line">                       </span><br><span class="line">            // 根据变量名解档取值，无论是什么类型</span><br><span class="line">            id value = [aDecoder decodeObjectForKey:key];</span><br><span class="line">            // 取出的值再设置给属性</span><br><span class="line">            [self setValue:value forKey:key];</span><br><span class="line">        &#125;</span><br><span class="line">        free(ivars);</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line">// 归档</span><br><span class="line">- (void)encodeWithCoder:(NSCoder *)aCoder &#123;</span><br><span class="line">     // 获取所有成员变量</span><br><span class="line">    unsigned int outCount = 0;</span><br><span class="line">    Ivar *ivars = class_copyIvarList([self class], &amp;outCount);</span><br><span class="line">    for (int i = 0; i &lt; outCount; i++) &#123;</span><br><span class="line">        Ivar ivar = ivars[i];</span><br><span class="line">        // 将每个成员变量名转换为NSString对象类型</span><br><span class="line">        NSString *key = [NSString stringWithUTF8String:ivar_getName(ivar)];</span><br><span class="line">               </span><br><span class="line">        // 通过成员变量名，取出成员变量的值</span><br><span class="line">        id value = [self valueForKeyPath:key];</span><br><span class="line">        // 再将值归档</span><br><span class="line">        [aCoder encodeObject:value forKey:key];</span><br><span class="line">    &#125;</span><br><span class="line">    free(ivars);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id=""><a href="#" class="headerlink" title=""></a><br></h2><p><br><br>参考资料:</p>
+<p><a href="http://www.jianshu.com/p/ab966e8a82e2" target="_blank" rel="noopener">http://www.jianshu.com/p/ab966e8a82e2</a><br><a href="http://www.jianshu.com/p/19f280afcb24" target="_blank" rel="noopener">http://www.jianshu.com/p/19f280afcb24</a></p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      XAspect封装友盟、个推SDK功能 | qiuwatcherの小站 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="qiuwatcher">
+    
+    
+
+    <meta name="description" content="##前言&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;在cocoachina上看到一篇私有Pods封装个推的文章，使得我对XAspect萌生了一点点的兴趣，本文为记录我尝试使用XAspect封装SDK，先附上项目地址。  使用场景-&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;如果同时开发几个APP，而每个APP都会用个推SDK来处理消息，用友盟来分享，以前的做法是每个APP都集成SDK并在">
+<meta name="keywords" content="XAspect">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XAspect封装友盟、个推SDK功能 | qiuwatcherの小站">
+<meta property="og:url" content="http://qiuwatcher.github.io/2017/08/24/XAspect封装友盟、个推SDK功能/index.html">
+<meta property="og:site_name" content="qiuwatcherの小站">
+<meta property="og:description" content="##前言&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;在cocoachina上看到一篇私有Pods封装个推的文章，使得我对XAspect萌生了一点点的兴趣，本文为记录我尝试使用XAspect封装SDK，先附上项目地址。  使用场景-&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;如果同时开发几个APP，而每个APP都会用个推SDK来处理消息，用友盟来分享，以前的做法是每个APP都集成SDK并在">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-15T06:07:17.635Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XAspect封装友盟、个推SDK功能 | qiuwatcherの小站">
+<meta name="twitter:description" content="##前言&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;在cocoachina上看到一篇私有Pods封装个推的文章，使得我对XAspect萌生了一点点的兴趣，本文为记录我尝试使用XAspect封装SDK，先附上项目地址。  使用场景-&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;如果同时开发几个APP，而每个APP都会用个推SDK来处理消息，用友盟来分享，以前的做法是每个APP都集成SDK并在">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">qiuwatcherの小站</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          朝如青絲暮成雪
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">XAspect封装友盟、个推SDK功能</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-08-24" class="post-meta__date date">2017-08-24</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/XAspect/">XAspect</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><br></p>
+<p>##前言<br>&ensp;&ensp;&ensp;&ensp;在cocoachina上看到一篇私有Pods封装个推的文章，使得我对XAspect萌生了一点点的兴趣，本文为记录我尝试使用XAspect封装SDK，先附上<a href="https://github.com/qiuwatcher/XAspectTest" target="_blank" rel="noopener">项目地址</a>。</p>
+<ul>
+<li><p>使用场景<br>-<br>&ensp;&ensp;&ensp;&ensp;如果同时开发几个APP，而每个APP都会用个推SDK来处理消息，用友盟来分享，以前的做法是每个APP都集成SDK并在每个APP项目中的AppDelegate处理一些SDK的代码，包含SDK基础配置、消息接收处理、远程信息处理、苹果通知注册、配置第三方平台、相关分享处理等等。其实在处理这部分内容中大部分配置都是一样的，个推推送只是在接收到消息后的处理不同，以处理不同的业务逻辑，友盟分享也只是分享的内容不同罢了。XAspect封装友盟、个推SDK功能就是用XAspect把相同的内容封装起来，不同的内容则在每个APP的AppDelegate分别进行处理。</p>
+</li>
+<li><p>使用工具</p>
+</li>
+<li>&ensp;&ensp;&ensp;&ensp;XAspect（点击去下载）是对Aspect的封装，它可以帮助你在不改变一个类或类实例的代码的前提下，有效更改类的行为。比iOS传统的AOP方法，更加简单高效、支持在方法执行的前/后或替代原方法执行。</li>
+</ul>
+<ul>
+<li>开始集成</li>
+<li>&ensp;&ensp;&ensp;&ensp;用Pods导入XAspect、友盟、个推SDK到项目中。</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp;参照<a href="https://developer.umeng.com/sdk/ios" target="_blank" rel="noopener">友盟开发文档</a>加入U-Share SDK依赖的系统库、添加第三方平台依赖库、配置SSO白名单、配置第三方平台URL Scheme。<br>参照<a href="http://docs.getui.com/mobile/ios/cocoapods/" target="_blank" rel="noopener">个推开发文档</a>开启推送功能、设置后台运行权限等。</p>
+<p>&ensp;&ensp;&ensp;&ensp;为了方便管理,我们创建一个友盟分享的单例manager，配置要分享的各平台的appkey、secretkey等等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;CPShareConfigManager.h&quot;</span><br><span class="line">@implementation CPShareConfigManager</span><br><span class="line">+ (CPShareConfigManager *)sharedInstance &#123;</span><br><span class="line">    static CPShareConfigManager* instance = nil;</span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        instance = [CPShareConfigManager new];</span><br><span class="line">    &#125;);</span><br><span class="line">    return instance;</span><br><span class="line">&#125;</span><br><span class="line">- (void)setPlaform:(UMSocialPlatConfigType)platformType</span><br><span class="line">            appKey:(NSString *)appKey</span><br><span class="line">         appSecret:(NSString *)appSecret</span><br><span class="line">       redirectURL:(NSString *)redirectURL &#123;</span><br><span class="line">    switch (platformType) &#123;</span><br><span class="line">        case UMSocialPlatConfigType_Sina:</span><br><span class="line">            self.SinaAppKey = appKey;</span><br><span class="line">            self.SinaAppSecret = appSecret;</span><br><span class="line">            self.SinaRedirectUrl = redirectURL;</span><br><span class="line">            break;</span><br><span class="line">        case UMSocialPlatConfigType_Wechat:</span><br><span class="line">            self.WXAppId = appKey;</span><br><span class="line">            self.WXAppSecret = appSecret;</span><br><span class="line">            break;</span><br><span class="line">        case UMSocialPlatConfigType_Tencent:</span><br><span class="line">            self.QQAppId = appKey;</span><br><span class="line">            self.QQAppKey = appSecret;</span><br><span class="line">            break;</span><br><span class="line">		default:</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">+ (UMSocialPlatformType)getUMSocialPlatformCPPlatformType:(CPSocialPlatformType)platformType &#123;</span><br><span class="line">    UMSocialPlatformType platFormType = UMSocialPlatformType_UnKnown;</span><br><span class="line">    switch (platformType) &#123;</span><br><span class="line">        case CPSocialPlatformType_QQ:</span><br><span class="line">            platFormType=UMSocialPlatformType_QQ;</span><br><span class="line">            break;</span><br><span class="line">        case CPSocialPlatformType_Sina:</span><br><span class="line">            platFormType=UMSocialPlatformType_Sina;</span><br><span class="line">            break;</span><br><span class="line">        case CPSocialPlatformType_WechatSession:</span><br><span class="line">            platFormType=UMSocialPlatformType_WechatSession;</span><br><span class="line">            break;</span><br><span class="line">        case CPSocialPlatformType_WechatTimeLine:</span><br><span class="line">            platFormType=UMSocialPlatformType_WechatTimeLine;</span><br><span class="line">            break;</span><br><span class="line">        default:</span><br><span class="line">            platFormType=UMSocialPlatformType_UnKnown;</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">    return platFormType;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line">``` </span><br><span class="line">&lt;br&gt;</span><br><span class="line">&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;然后就是重中之重，创建一个空的.m文件，命名为XAspect-shareDelegate.m。</span><br></pre></td></tr></table></figure>
+<p>#import “AppDelegate.h”</p>
+<p>#import &lt;XAspect/XAspect.h&gt;</p>
+<p>#define AtAspect ShareModule //定义一个名称空间, 这个宏会在当前的上下文生成一个唯一的标示符, 使用这个宏定义一个名称空间是强制要求的</p>
+<p>#define AtAspectOfClass AppDelegate<br>@classPatchField(AppDelegate)<br>@synthesizeNucleusPatch(Default, -, BOOL, application:(UIApplication <em>)application didFinishLaunchingWithOptions:(NSDictionary </em>)launchOptions);<br>AspectPatch(-, BOOL, application:(UIApplication <em>)application didFinishLaunchingWithOptions:(NSDictionary </em>)launchOptions)<br>{<br>    return XAMessageForward(application:application didFinishLaunchingWithOptions:launchOptions);<br>}<br>@end</p>
+<p>#undef AtAspectOfClass</p>
+<p>#undef AtAspect<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;这里是往AppDelegate类的`application:(UIApplication )application didFinishLaunchingWithOptions:(NSDictionary )launchOptions`方法内注入代码, 只是一个输出语句;</span><br><span class="line">你可以在这里写任何需要在程序启动的时候初始化的代码, 例如: 分享, 推送等第三方信息注册。其效果和写在AppDelegate类的`application:(UIApplication )application didFinishLaunchingWithOptions:(NSDictionary )launchOptions`是一样的。</span><br></pre></td></tr></table></figure></p>
+<p>#define AtAspectOfClass AppDelegate<br>@classPatchField(AppDelegate)</p>
+<p>@end<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;使用@classPatchField(&lt;#ClassName#&gt;) … @end字段来创建一个类来实现你需要注入的代码, 其功能类似于@ implementation……@end. 在这之前, 你需要使用宏#define AtAspectOfClass &lt;#ClassName#&gt;类定义需要注入代码的类, 这里的类名和@classPatchField(&lt;#ClassName#&gt;)中的参数类名要一致.</span><br><span class="line"></span><br><span class="line">`@synthesizeNucleusPatch(Default, -, BOOL, application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions);</span><br><span class="line">`</span><br><span class="line"></span><br><span class="line">&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;在XAspect实现方法之前，必须保证源类中存在这个方法。宏@synthesizeNucleusPatch()可以检测源类是否存在这个方法，如果不存在，会尝试调用默认的一个方法，否则会抛出异常。</span><br><span class="line"></span><br><span class="line">&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;搭好基本框架后，就可以在文件中`application: didFinishLaunchingWithOptions:`添加配置各平台appkey等相关信息。</span><br><span class="line"></span><br><span class="line">&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;配置好了，😑 可以测测啦 demo里我写了个shareMenuView分享面板，以及shareHelper完成分享操作。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;br&gt;</span><br><span class="line">&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;接下来是个推的封装，同理建个个推的单例manager管理设置appid、appkey等，创建XAspect-GTDelegate.m。</span><br></pre></td></tr></table></figure></p>
+<p>#import “AppDelegate.h”</p>
+<p>#import &lt;XAspect/XAspect.h&gt;</p>
+<p>#import “GeTuiSdk.h”</p>
+<p>#if <strong>IPHONE_OS_VERSION_MAX_ALLOWED &gt;= </strong>IPHONE_10_0</p>
+<p>#import &lt;UserNotifications/UserNotifications.h&gt;</p>
+<p>#endif</p>
+<p>#define AtAspect GeTuiModule</p>
+<p>#define AtAspectOfClass AppDelegate<br>@classPatchField(AppDelegate)<br>@synthesizeNucleusPatch(Default, -, BOOL, application:(UIApplication <em>)application didFinishLaunchingWithOptions:(NSDictionary </em>)launchOptions);<br>@synthesizeNucleusPatch(Default, -, void, application:(UIApplication <em>)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData </em>)deviceToken);<br>@synthesizeNucleusPatch(Default, -, void, application:(UIApplication <em>)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler);<br>@synthesizeNucleusPatch(Default, -, void, application:(UIApplication </em>)application didFailToRegisterForRemoteNotificationsWithError:(NSError <em>)error);<br>@synthesizeNucleusPatch(Default, -, void, application:(UIApplication </em>)application didRegisterUserNotificationSettings:(UIUserNotificationSettings <em>)notificationSettings);<br>@synthesizeNucleusPatch(Default, -, void, application:(UIApplication </em>)application didReceiveRemoteNotification:(NSDictionary <em>)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler);<br>@synthesizeNucleusPatch(Default, -, void, applicationDidBecomeActive:(UIApplication </em>)application);<br>//@synthesizeNucleusPatch(Default, -, void, application:(UIApplication <em>)application didReceiveRemoteNotification:(NSDictionary </em>)userInfo);</p>
+<p>#import “AppDelegate.h”</p>
+<p>#import &lt;XAspect/XAspect.h&gt;</p>
+<p>#import “GeTuiSdk.h”</p>
+<p>#if <strong>IPHONE_OS_VERSION_MAX_ALLOWED &gt;= </strong>IPHONE_10_0</p>
+<p>#import &lt;UserNotifications/UserNotifications.h&gt;</p>
+<p>#endif</p>
+<p>#define AtAspect GeTuiModule</p>
+<p>#define AtAspectOfClass AppDelegate<br>@classPatchField(AppDelegate)<br>@synthesizeNucleusPatch(Default, -, BOOL, application:(UIApplication <em>)application didFinishLaunchingWithOptions:(NSDictionary </em>)launchOptions);<br>@synthesizeNucleusPatch(Default, -, void, application:(UIApplication <em>)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData </em>)deviceToken);<br>@synthesizeNucleusPatch(Default, -, void, application:(UIApplication <em>)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler);<br>@synthesizeNucleusPatch(Default, -, void, application:(UIApplication </em>)application didFailToRegisterForRemoteNotificationsWithError:(NSError <em>)error);<br>@synthesizeNucleusPatch(Default, -, void, application:(UIApplication </em>)application didRegisterUserNotificationSettings:(UIUserNotificationSettings <em>)notificationSettings);<br>@synthesizeNucleusPatch(Default, -, void, application:(UIApplication </em>)application didReceiveRemoteNotification:(NSDictionary <em>)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler);<br>@synthesizeNucleusPatch(Default, -, void, applicationDidBecomeActive:(UIApplication </em>)application);<br>//@synthesizeNucleusPatch(Default, -, void, application:(UIApplication <em>)application didReceiveRemoteNotification:(NSDictionary </em>)userInfo);<br>AspectPatch(-, BOOL, application:(UIApplication <em>)application didFinishLaunchingWithOptions:(NSDictionary </em>)launchOptions)<br>{<br>    return XAMessageForward(application:application didFinishLaunchingWithOptions:launchOptions);<br>}<br>/<strong> 远程通知注册成功委托 向个推服务器注册DeviceToken <em>/<br>AspectPatch(-, void, application:(UIApplication </em>)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken)<br>{<br>    return XAMessageForward(application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken);<br>}<br>/</strong> Background Fetch 接口回调处理 <em>/<br>AspectPatch(-, void, application:(UIApplication </em>)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler)<br>{<br>   return XAMessageForward(application:application performFetchWithCompletionHandler:completionHandler);<br>}<br>//如果App处于Background状态时，只用用户点击了通知消息时才会调用该方法；如果App处于Foreground状态，会直接调用该方法。<br>AspectPatch(-, void,application:(UIApplication <em>)application didReceiveRemoteNotification:(NSDictionary </em>)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler)<br>{<br>    return XAMessageForward(application:(UIApplication <em>)application didReceiveRemoteNotification:(NSDictionary </em>)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler);<br>}<br>/<strong> 已登记用户通知 <em>/<br>AspectPatch(-, void, application:(UIApplication </em>)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings)<br>{<br>    return XAMessageForward(application:application didRegisterUserNotificationSettings:notificationSettings);<br>}<br>/</strong> 远程通知注册失败委托 <em>/<br>AspectPatch(-, void, application:(UIApplication </em>)application didFailToRegisterForRemoteNotificationsWithError:(NSError <em>)error){<br>   return XAMessageForward(application:application didFailToRegisterForRemoteNotificationsWithError:error);<br>}<br>AspectPatch(-, void, applicationDidBecomeActive:(UIApplication </em>)application) {<br>    return XAMessageForward(applicationDidBecomeActive:application);<br>}<br><code>`</code><br>&ensp;&ensp;&ensp;&ensp;完成基本框架搭建后，在文件中实现个推回调接口、初始化SDK并注册APNs、向个推服务器注册DeviceToken、处理收到消息后的业务逻辑等。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><br></h2><p><em>参考：</em></p>
+<p><a href="https://github.com/wujunyang/jiaModuleDemo" target="_blank" rel="noopener">jiaModuleDemo</a></p>
+<p><a href="http://www.cocoachina.com/ios/20160717/17077.html" target="_blank" rel="noopener">私有Pods封装个推SDK功能(解决方案)</a></p>
+<p><a href="https://www.jianshu.com/p/bb0374ec3e7e" target="_blank" rel="noopener">XAspect学习总结</a></p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>

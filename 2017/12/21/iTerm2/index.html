@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      iTerm2 &amp; Oh My Zsh DIY终端 | qiuwatcherの小站 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="qiuwatcher">
+    
+    
+
+    <meta name="description" content="##前言&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;想要一个自制高逼格的终端界面吗？iTerm2你值得拥有！跟上脚步，感觉DIY起来吧！ 效果如下  具体步骤 下载安装iTerm2  &amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;前往iTerm2官网下载并安装  下载配色主题  &amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;官网有很多配色，少侠可以任意挑选 （链接直达）  安装oh-my">
+<meta name="keywords" content="-iTerm2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iTerm2 &amp; Oh My Zsh DIY终端 | qiuwatcherの小站">
+<meta property="og:url" content="http://qiuwatcher.github.io/2017/12/21/iTerm2/index.html">
+<meta property="og:site_name" content="qiuwatcherの小站">
+<meta property="og:description" content="##前言&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;想要一个自制高逼格的终端界面吗？iTerm2你值得拥有！跟上脚步，感觉DIY起来吧！ 效果如下  具体步骤 下载安装iTerm2  &amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;前往iTerm2官网下载并安装  下载配色主题  &amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;官网有很多配色，少侠可以任意挑选 （链接直达）  安装oh-my">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://qiuwatcher.github.io/2017/12/21/images/iTerm2/iterm_1.jpg">
+<meta property="og:image" content="http://qiuwatcher.github.io/2017/12/21/images/iTerm2/iterm_2.jpg">
+<meta property="og:image" content="http://qiuwatcher.github.io/2017/12/21/images/iTerm2/iterm_3.jpg">
+<meta property="og:image" content="http://qiuwatcher.github.io/2017/12/21/images/iTerm2/iterm_4.jpg">
+<meta property="og:image" content="http://qiuwatcher.github.io/2017/12/21/images/iTerm2/iterm_5.jpg">
+<meta property="og:updated_time" content="2018-12-15T05:35:09.951Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iTerm2 &amp; Oh My Zsh DIY终端 | qiuwatcherの小站">
+<meta name="twitter:description" content="##前言&amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;想要一个自制高逼格的终端界面吗？iTerm2你值得拥有！跟上脚步，感觉DIY起来吧！ 效果如下  具体步骤 下载安装iTerm2  &amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;前往iTerm2官网下载并安装  下载配色主题  &amp;ensp;&amp;ensp;&amp;ensp;&amp;ensp;官网有很多配色，少侠可以任意挑选 （链接直达）  安装oh-my">
+<meta name="twitter:image" content="http://qiuwatcher.github.io/2017/12/21/images/iTerm2/iterm_1.jpg">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">qiuwatcherの小站</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          朝如青絲暮成雪
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">iTerm2 &amp; Oh My Zsh DIY终端</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-12-21" class="post-meta__date date">2017-12-21</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/iTerm2/">-iTerm2</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p><br></p>
+<p>##前言<br>&ensp;&ensp;&ensp;&ensp;想要一个自制高逼格的终端界面吗？iTerm2你值得拥有！跟上脚步，感觉DIY起来吧！</p>
+<h4 id="效果如下"><a href="#效果如下" class="headerlink" title="效果如下"></a>效果如下</h4><p><img src="/2017/12/21/iTerm2/../images/iTerm2/iterm_1.jpg" alt=""></p>
+<p><br></p>
+<h4 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h4><ul>
+<li>下载安装iTerm2</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp;前往iTerm2官网下载并安装</p>
+<ul>
+<li>下载配色主题</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp;官网有很多配色，少侠可以任意挑选 （<a href="https://iterm2colorschemes.com/" target="_blank" rel="noopener">链接直达</a>）</p>
+<ul>
+<li>安装oh-my-zsh</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp;打开刚安装的iTerm2,并输入一下命令即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c &quot;$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;</span><br></pre></td></tr></table></figure></p>
+<p>&ensp;&ensp;&ensp;&ensp;oh-my-zsh的github地址:<a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="noopener">https://github.com/robbyrussell/oh-my-zsh</a></p>
+<ul>
+<li>使用agnoster主题</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp;使用vim编辑.zshrc文件里的ZSH_THEME字段为agnoster</p>
+<p><img src="/2017/12/21/iTerm2/../images/iTerm2/iterm_2.jpg" alt=""></p>
+<ul>
+<li>下载安装Meslo字体</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp;应用agnoster这个主题需要特殊的字体支持，否则会出现乱码情况，这时我们用Meslo配置字体：<br>Meslo<a href="https://github.com/powerline/fonts/blob/master/Meslo%20Slashed/Meslo%20LG%20M%20Regular%20for%20Powerline.ttf" target="_blank" rel="noopener">下载地址</a>:(点击 view raw 以下载字体)</p>
+<p>&ensp;&ensp;&ensp;&ensp;下载完成后，双击 安装字体到系统字体册。</p>
+<ul>
+<li>配置iTerm2</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp;打开iTerm2,设置其为默认终端</p>
+<p><img src="/2017/12/21/iTerm2/../images/iTerm2/iterm_3.jpg" alt=""></p>
+<p>&ensp;&ensp;&ensp;&ensp;设置字体应用到iTerm2 (iTerm -&gt; Preferences -&gt; Profiles -&gt; Text -&gt; Change Font)</p>
+<p><img src="/2017/12/21/iTerm2/../images/iTerm2/iterm_4.jpg" alt=""></p>
+<p>&ensp;&ensp;&ensp;&ensp;设置配色主题应用到iTerm2 （iTerm -&gt; Preferences -&gt; Profiles -&gt; Colors -&gt; Color Presets）点击Color Presets选项卡下拉 选择Import, 到之前下载的配色主题文件夹中添加自己心仪的配色，添加完成后选择该主题即可。</p>
+<p><img src="/2017/12/21/iTerm2/../images/iTerm2/iterm_5.jpg" alt=""></p>
+<ul>
+<li>重启iTerm2</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp;至此，配置完成，赶紧重启iTerm2，看看效果吧！</p>
+
+  </section>
+
+  <section class="post-comments">
+
+    <!-- 将评论系统（例如Disqus、多说、友言、畅言等）提供的代码片段粘贴在这里 -->
+    
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
